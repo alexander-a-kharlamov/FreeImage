@@ -49,6 +49,15 @@ static Int DecodeSignificantAbsLevel (struct CAdaptiveHuffman *pAHexpt, BitIOInf
 #define _FORCEINLINE
 #endif // X86OPT_INLINE
 
+#if defined(__APPLE__)
+
+// Mac OS X / Darwin features
+#include <libkern/OSByteOrder.h>
+#define _byteswap_ulong(x) OSSwapInt32(x)
+#define _byteswap_ulong(x) OSSwapInt64(x)
+
+#endif
+
 //================================================================
 // Memory access functions
 //================================================================
